@@ -1,27 +1,26 @@
-import { Global, Module } from '@nestjs/common';
-import { DataSource } from 'typeorm';
-import { identityConnection } from './datasource.config';
+// import { Global, Module } from '@nestjs/common';
+// import { DataSource } from 'typeorm';
 
-export class DataSources {
-    identity: DataSource
-}
+// export class DataSources {
+//     identity: DataSource
+// }
 
-@Global()
-@Module({
-    imports: [],
-    providers: [
-        {
-            provide: DataSources,
-            inject: [],
-            useFactory: async () => {
-                return {
-                    identityConnection,
-                };
-            },
-        }
-    ],
-    exports: [DataSources],
-})
-export class TypeOrmModule { }
+// @Global()
+// @Module({
+//     imports: [],
+//     providers: [
+//         {
+//             provide: DataSources,
+//             inject: [],
+//             useFactory: async () => {
+//                 return {
+//                     {},
+//                 };
+//             },
+//         }
+//     ],
+//     exports: [DataSources],
+// })
+// export class TypeOrmModule { }
 
 

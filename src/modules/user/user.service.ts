@@ -1,17 +1,22 @@
-import { Injectable } from '@nestjs/common';
-import { DataSources } from 'src/typeorm/typeorm.module';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { DataSource } from 'typeorm';
 
 @Injectable()
 export class UserService {
-    private readonly dataSources: DataSources;
-    constructor(dataSources: DataSources) { this.dataSources = dataSources; }
+    private readonly dataSources: DataSource;
+    constructor(dataSources: DataSource) { this.dataSources = dataSources; }
 
 
 
     async getUsers() {
-        const users = await this.dataSources.identity.query('SELECT * FROM [User]');
+        try {
+            const users = await this.dataSources.query('SELECT * FROM [User]');
 
-        return users;
+            return { data: users };
+
+        } catch (error) {
+            throw new HttpException('Faild to request users..', HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

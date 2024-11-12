@@ -16,7 +16,7 @@ const config = {
     autoLoadEntities: true,
     migrations: ["dist/migrations/*{.ts,.js}"],
     entities: ["dist/**/*.entity{.ts,.js}"],
-    synchronize: true,
+    synchronize: false,
     logging: true,
     options: {
         trustServerCertificate: true
