@@ -17,4 +17,4 @@ spec:
         - name: api-cognito-sync
           image: 851725419862.dkr.ecr.us-east-1.amazonaws.com/dev/api-cognito-sync
           ports:
-            - containerPort: 4000
+            - containerPort: 3001
