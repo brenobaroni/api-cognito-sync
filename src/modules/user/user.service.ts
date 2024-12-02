@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
+import { User } from './user.entity';
 
 @Injectable()
 export class UserService {
@@ -10,7 +11,7 @@ export class UserService {
 
     async getUsers() {
         try {
-            const users = await this.dataSources.query('SELECT * FROM [User]');
+            const users = await this.dataSources.manager.find(User);
 
             return { data: users };
 
