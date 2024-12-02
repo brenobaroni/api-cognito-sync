@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-cognito-sync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-cognito-sync
+  template:
+    metadata:
+      labels:
+        app: api-cognito-sync
+    spec:
+      serviceAccountName: eks-dynamodb-srv-acct
+      containers:
+        - name: api-cognito-sync
+          image: 851725419862.dkr.ecr.us-east-1.amazonaws.com/dev/api-cognito-sync
+          ports:
+            - containerPort: 4000

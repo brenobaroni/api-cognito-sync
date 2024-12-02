@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-cognito-sync
+    environment:
+      - PORT=${PORT}
+      - DB_IDENTITY_HOST=${DB_IDENTITY_HOST}
+      - DB_IDENTITY_PORT=${DB_IDENTITY_PORT}
+      - DB_IDENTITY_USER=${DB_IDENTITY_USER}
+      - DB_IDENTITY_PASS=${DB_IDENTITY_PASS}
+      - DB_IDENTITY_DATABASE=${DB_IDENTITY_DATABASE}
+    ports:
+      - 3001:3001

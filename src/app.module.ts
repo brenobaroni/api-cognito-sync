@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import typeorm from './typeorm/datasource.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Reflector } from '@nestjs/core';
+import { LeadModule } from './modules/lead/lead.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { Reflector } from '@nestjs/core';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => (configService.get('typeorm'))
     }),
+    LeadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -12,7 +12,6 @@ export class UserService {
     async getUsers() {
         try {
             const users = await this.dataSources.manager.find(User);
-
             return { data: users };
 
         } catch (error) {
